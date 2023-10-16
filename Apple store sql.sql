@@ -44,17 +44,17 @@ GROUP BY CASE
 --Check if apps with more supported language have higher ratings
 
 SELECT CASE 
-			When lang_num < 10 then '<10 languages'
-			when lang_num BETWEEN 10 AND 30 THEN '10-30 languages'
-			else '>30 languages'
-			end as language_bucket,
-			avg(user_rating) as Avg_Rating
+	When lang_num < 10 then '<10 languages'
+	when lang_num BETWEEN 10 AND 30 THEN '10-30 languages'
+	else '>30 languages'
+	end as language_bucket,
+	avg(user_rating) as Avg_Rating
 From AppleStore$
 GROUP BY CASE 
-			When lang_num < 10 then '<10 languages'
-			when lang_num BETWEEN 10 AND 30 THEN '10-30 languages'
-			else '>30 languages'
-			END
+When lang_num < 10 then '<10 languages'
+when lang_num BETWEEN 10 AND 30 THEN '10-30 languages'
+else '>30 languages'
+END
 ORDER BY Avg_Rating DESC;
 
 
