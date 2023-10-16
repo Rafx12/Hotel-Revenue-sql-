@@ -27,6 +27,7 @@ FROM AppleStore$
 
 
 --Determine whether paid apps have highter ratings than free apps
+--This leads to more effective marketing strategies and better conversion rates.
 
 
 SELECT CASE
@@ -42,6 +43,7 @@ GROUP BY CASE
 
 
 --Check if apps with more supported language have higher ratings
+--with this information you can allocate more resources to localize apps into languages that hight in demand, potentially leading to better user engagement.
 
 SELECT CASE 
 	When lang_num < 10 then '<10 languages'
@@ -86,6 +88,7 @@ WHERE A.RANK = 1
 
 
 --genre total amount of revenue
+--This will help determine what your input to output on an app would be depending on the prime_genre.
 
 Select prime_genre,ROUND(SUM(price),2) AS Total_Revenue
 FROM AppleStore$
@@ -94,6 +97,8 @@ ORDER BY Total_Revenue DESC
 
 
 --most expensive app in each genre
+--business can gain a deeper understanding of the price points that are effective in different markets.
+--in a business aspect it helps by understand the customer and what they are willing to pay.
 
 Select 
 	prime_genre,
@@ -119,7 +124,7 @@ WHERE price = 0
 ORDER BY rating_count_tot DESC
 
 
--- What is the average user rating for apps with 4+ content rating comapred to those with a 17+ content rating?
+-- What is the average user rating for apps with 4+ content rating compared to those with a 17+ content rating?
 
 SELECT cont_rating, AVG(user_rating) AS average_rating
 FROM AppleStore$
@@ -151,6 +156,7 @@ FROM AppleStore$
 GROUP BY cont_rating
 
 --What apps need or use the most size_bytes?
+--helped business target exactly performance bottlenecks an take steps to improve user experience. Also reducing app size could lead to faster speeds and reduced data usage.
 
 
 Select 
